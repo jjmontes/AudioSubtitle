@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>Demo AudioSubtitle</title>
+		<meta charset="utf-8"/>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="../remotetextfile/RemoteTextFile.js"></script>
+		<script type="text/javascript" src="../subtitle/subtitle.js"></script>
+		<script type="text/javascript" src="audiosubtitle.js"></script>
+	</head>
+	<body>
+		<header>
+			<h1>AudioSubtitle</h1>
+		</header>
+		<section>
+			<audio id="audio" controls="true">
+			  <source src="tracks/pruebasonido.mp3" type="audio/mp3" />
+			  <source src="tracks/pruebasonido.ogg" type="audio/ogg" />
+			  <source src="tracks/pruebasonido.m4a" type="audio/acc" />
+			  <source src="tracks/pruebasonido.wav" type="audio/wav" />
+			  Your browser does not support the audio tag.
+			</audio>
+			<p id="subtitle"></p>
+		</section>
+	</body>
+		<script>
+			var audioSubtitle = new AudioSubtitle(document.getElementById('audio'), document.getElementById('subtitle'));
+		</script>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>Demo</title>
+		<meta charset="utf-8"/>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="RemoteTextFile.js"></script>
+	</head>
+	<body>
+		<header>
+			<h1>RemoteTextFile</h1>
+		</header>
+		<section>
+			<h2>remoteFileGetAll</h2>
+			<p id="remoteFileGetAll"></p>
+		</section>
+		<section>
+			<h2>remoteFileGetLine</h2>
+			<p id="remoteFileGetLine"></p>
+		</section>
+		<section>
+			<h2>remoteFileGetCountLines</h2>
+			<p id="remoteFileGetCountLines"></p>
+		</section>
+	</body>
+		<script>
+			var remoteFile = new RemoteTextFile('samplefile.txt');
+			
+			var remoteFileGetAll = document.getElementById('remoteFileGetAll');
+			var remoteFileGetLine = document.getElementById('remoteFileGetLine');
+			var remoteFileGetCountLines = document.getElementById('remoteFileGetCountLines');
+
+			remoteFileGetAll.innerText = remoteFile.getAll();
+			remoteFileGetLine.innerText = remoteFile.getLine(5) + remoteFile.getLine(2) + remoteFile.getLine(1) + remoteFile.getLine(8);
+			remoteFileGetCountLines.innerText = remoteFile.getCountLines();
+
+
+
+
+		</script>
+</html>

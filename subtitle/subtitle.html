@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>Demo</title>
+		<meta charset="utf-8"/>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="../remotetextfile/RemoteTextFile.js"></script>
+		<script type="text/javascript" src="subtitle.js"></script>
+		<script>
+			var subtitleFile = new SubtitleFile("http://localhost/AudioSubtitle/subtitle/samplesubtitle.srt");
+
+			function obtenerSubtituloPorId() {
+				return subtitleFile.getSubtitleById(document.getElementById('nroid').value);
+			}
+
+			function obtenerSubtituloPorTiempo() {
+				return subtitleFile.getSubtitleAtTime(document.getElementById('tiempo').value);
+			}
+
+			function cargarData(subtitulo) {
+				if (subtitulo == null) {
+					document.getElementById('subtitle').innerHTML = '';
+					document.getElementById('id').innerHTML = '';
+					document.getElementById('times').innerHTML = '';
+				} else {
+					document.getElementById('subtitle').innerHTML = subtitulo.text;
+					document.getElementById('id').innerHTML = subtitulo.index;
+					document.getElementById('times').innerHTML = subtitulo.start + ' hasta ' + subtitulo.end;
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<header>
+			<h1>Subtitle</h1>
+		</header>
+		<section>
+			<span>Id</span> <input id="nroid" value="1" />
+			<button onclick="cargarData(obtenerSubtituloPorId());">por id</button>
+			<span>Valores posibles: 1, 2, 3, 4, 5, 6, 7</span>
+			<br />
+			<span>Tiempo</span> <input id="tiempo" value="00:00:00,000" />
+			<button onclick="cargarData(obtenerSubtituloPorTiempo());">por tiempo</button>
+			<span>Valores posibles:</span>
+			<ul>
+				<li>entre 00:02:06,192 y 00:02:09,253</li>
+				<li>entre 00:02:09,296 y 00:02:11,458</li>
+				<li>entre 00:03:35,727 y 00:03:38,219</li>
+				<li>entre 00:03:38,264 y 00:03:40,391</li>
+				<li>entre 00:05:16,276 y 00:05:19,439</li>
+				<li>entre 00:05:19,479 y 00:05:21,913</li>
+				<li>entre 00:05:24,252 y 00:05:26,186</li>
+			</ul>
+			<div>
+				<h2>Texto del subtítulo</h2>
+				<p id="subtitle"></p>
+			</div>
+			<div>
+				<h2>Id del subtítulo</h2>
+				<p id="id"></p>
+			<div>
+			<div>
+				<h2>Tiempo del subtítulo</h2>
+				<p id="times"></p>
+			<div>
+		</section>
+	</body>
+</html>
